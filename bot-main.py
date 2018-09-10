@@ -60,8 +60,8 @@ def post_recog(easy, upv1):
 
                 
             date = datetime.datetime.fromtimestamp(submission.created_utc)
-            dif = int(datetime.datetime.utcnow() - date)
-            if dif <= 86400:
+            dif = datetime.datetime.utcnow() - date
+            if dif <= datetime.timedelta(days=1):
                 submission.mod.flair('C\'mon guys! We failed!')
                 submission.mod.remove()
                
@@ -83,7 +83,7 @@ def post_recog(easy, upv1):
                 submission.mod.flair('You\'re nearly there. Keep upvoting!')
                 
                 
-            if dif <= 86400:
+            if dif <= datetime.timedelta(days=1):
                 submission.mod.flair('C\'mon guys! We failed!')
                 submission.mod.remove()
 
