@@ -58,6 +58,13 @@ def post_recog(easy, upv1):
             else:
                 submission.mod.flair('You\'re nearly there. Keep upvoting!')
 
+                
+            date = datetime.datetime.fromtimestamp(submission.created_utc)
+            if datetime.datetime.utcnow() - date = 86400:
+                submission.mod.flair('C\'mon guys! We failed!')
+                submission.mod.remove()
+               
+ # divider
 
         if upv1 in submission.title and submission.id not in post_list:
 
@@ -73,6 +80,12 @@ def post_recog(easy, upv1):
                     print("submission filter updated")  
             else:
                 submission.mod.flair('You\'re nearly there. Keep upvoting!')
+                
+                
+            date = datetime.datetime.fromtimestamp(submission.created_utc)
+            if datetime.datetime.utcnow() - date = 86400:
+                submission.mod.flair('C\'mon guys! We failed!')
+                submission.mod.remove()
 
 
          
