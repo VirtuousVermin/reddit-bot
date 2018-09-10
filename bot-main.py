@@ -74,10 +74,7 @@ def post_recog(easy, upv1):
                 submission.mod.flair('You\'re nearly there. Keep upvoting!')
 
 
-            
-
-            
-            
+         
 
 
 def saved_list():
