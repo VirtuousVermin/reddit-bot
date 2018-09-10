@@ -112,12 +112,3 @@ while True:
    post_recog(easy, upv1)
 
 subreddit = r.subreddit(easy)
-
-
-
-
-
-
-
-
-
