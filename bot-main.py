@@ -95,6 +95,7 @@ def replymesg():
     for message in r.inbox.messages(limit=50):
         if "halfling" in message.subject and message.id not in mesg_list:
             print(message.id)
+            message.compose(subject='Test', text='Test', to=message.author)
             mesg_list.append(message.id)
             with open ("list3.txt", "a") as f:
                     f.write(message.id + "\n")
