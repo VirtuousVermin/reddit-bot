@@ -89,11 +89,16 @@ def post_recog(easy, upv1):
                 submission.mod.flair('C\'mon guys! We failed!')
                 submission.mod.remove()
 
+# divider
 
 def replymesg():
     for message in r.inbox.messages(limit=50):
-        if "halfling" in message.subject and message.id:
+        if "halfling" in message.subject and message.id not in mesg_list:
             print(message.id)
+            mesg_list.append(message.id)
+                with open ("list3.txt", "a") as f:
+                    f.write(message.id + "\n")
+                    print("message filter updated")  
 
 
 
@@ -111,8 +116,15 @@ def list2():
     return post_list
 
 
-some_list = ['Halfling', 'Dwarf', 'Elf', 'Orc']
+def list3():
+    with open("list3.txt", "r") as f:
+        mesg_list = f.read()
+        mesg_list = mesg_list.split()
+    return mesg_list
 
+
+
+some_list = ['Halfling', 'Dwarf', 'Elf', 'Orc']
 
 easy = 'kickopenthedoor'
 
@@ -124,6 +136,7 @@ upv2 = "101"
 r = login()
 replied_list = saved_list()
 post_list = list2()
+mesg_list = list3()
 while True:
    run(r, saved_list,  some_list)
    post_recog(easy, upv1)
