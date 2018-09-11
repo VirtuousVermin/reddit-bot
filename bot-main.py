@@ -5,6 +5,7 @@ import os
 import requests
 import random
 import datetime
+import json
 print("not deporting the flares")
 
 
@@ -93,14 +94,62 @@ def post_recog(easy, upv1):
 
 def replymesg():
     for message in r.inbox.messages(limit=50):
-        if "halfling" in message.subject and message.id not in mesg_list:
-            print(message.id)
-            r.redditor('VirtuousVermin').message('Test', 'Tes2t')
-            mesg_list.append(message.id)
-            with open ("list3.txt", "a") as f:
-                    f.write(message.id + "\n")
-                    print("message filter updated")  
+        if "halfling" in message.subject.lower() and message.id not in mesg_list:
+            for flair in r.subreddit(easy).flair(redditor=message.author):
+                
+                if 'Halfling' in str(flair):
+                    print(message.id)
+                    r.redditor(message.author.name).message('Hello Halfing! You\'ll be added soon.', 'Dumb, slow mods amirite?')
+                    r.redditor('VirtuousVermin').message('{message.author}', 'u/{message.author} is a halfling')
+                    mesg_list.append(message.id)
+                    with open ("list3.txt", "a") as f:
+                        f.write(message.id + "\n")
+                        print("message filter updated")  
+                else:
+                    r.redditor(message.author.name).message('Liar!', 'You\'re not an Halfling!')
 
+
+        if "orc" in message.subject.lower() and message.id not in mesg_list:
+            for flair in r.subreddit(easy).flair(redditor=message.author):
+                
+                if 'Orc' in str(flair):
+                    print(message.id)
+                    r.redditor(message.author.name).message('Hello Orc! You\'ll be added soon.', 'Dumb, slow mods amirite?')
+                    r.redditor('VirtuousVermin').message('{message.author}', 'u/{message.author} is an orc')
+                    mesg_list.append(message.id)
+                    with open ("list3.txt", "a") as f:
+                        f.write(message.id + "\n")
+                        print("message filter updated")
+                else:
+                    r.redditor(message.author.name).message('Liar!', 'You\'re not an Orc!')
+
+        if "elf" in message.subject.lower() and message.id not in mesg_list:
+            for flair in r.subreddit(easy).flair(redditor=message.author):
+                
+                if 'Elf' in str(flair):
+                    print(message.id)
+                    r.redditor(message.author.name).message('Hello Elf! You\'ll be added soon.', 'Dumb, slow mods amirite?')
+                    r.redditor('VirtuousVermin').message('{message.author}', 'u/{message.author} is an elf')
+                    mesg_list.append(message.id)
+                    with open ("list3.txt", "a") as f:
+                        f.write(message.id + "\n")
+                        print("message filter updated")
+                else:
+                    r.redditor(message.author.name).message('Liar!', 'You\'re not an Elf!')
+
+        if "dwarf" in message.subject.lower() and message.id not in mesg_list:
+            for flair in r.subreddit(easy).flair(redditor=message.author):
+                
+                if 'Dwarf' in str(flair):
+                    print(message.id)
+                    r.redditor(message.author.name).message('Hello Dwarf! You\'ll be added soon.', 'Dumb, slow mods amirite?')
+                    r.redditor('VirtuousVermin').message('{message.author}', 'u/{message.author} is a dwarf')
+                    mesg_list.append(message.id)
+                    with open ("list3.txt", "a") as f:
+                        f.write(message.id + "\n")
+                        print("message filter updated")
+                else:
+                    r.redditor(message.author.name).message('Liar!', 'You\'re not an Elf!')
 
 
 def saved_list():
@@ -142,5 +191,6 @@ while True:
    run(r, saved_list,  some_list)
    post_recog(easy, upv1)
    replymesg()
+   time.sleep(3)
 
 subreddit = r.subreddit(easy)
