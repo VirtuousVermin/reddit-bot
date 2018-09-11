@@ -212,6 +212,6 @@ while True:
    run(r, saved_list,  some_list)
    post_recog(easy, upv1)
    replymesg()
-   time.sleep(3)
+   time.sleep(7)
 
 subreddit = r.subreddit(easy)
