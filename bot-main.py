@@ -96,7 +96,7 @@ def replymesg():
         if "halfling" in message.subject and message.id not in mesg_list:
             print(message.id)
             mesg_list.append(message.id)
-                with open ("list3.txt", "a") as f:
+            with open ("list3.txt", "a") as f:
                     f.write(message.id + "\n")
                     print("message filter updated")  
 
