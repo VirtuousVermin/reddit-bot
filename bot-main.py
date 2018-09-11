@@ -90,9 +90,9 @@ def post_recog(easy, upv1):
                 submission.mod.remove()
 
 
-def replymsg():
-    for message in message.inbox:
-        if "halfling" in message.title and message.id:
+def replymesg():
+    for message in r.inbox.messages(limit=50):
+        if "halfling" in message.subject and message.id:
             print(message.id)
 
 
@@ -127,6 +127,6 @@ post_list = list2()
 while True:
    run(r, saved_list,  some_list)
    post_recog(easy, upv1)
-   replymsg()
+   replymesg()
 
 subreddit = r.subreddit(easy)
