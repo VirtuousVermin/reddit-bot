@@ -84,7 +84,7 @@ def post_recog(easy, upv1):
             else:
                 submission.mod.flair(f'You\'re nearly there. Keep upvoting! {submission.score}/{upv1}')
                 
-                
+            date = datetime.datetime.fromtimestamp(submission.created_utc)
             if dif >= datetime.timedelta(days=1):
                 print('ran out of time')
                 submission.mod.flair('C\'mon guys! We failed!')
