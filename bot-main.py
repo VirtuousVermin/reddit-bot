@@ -21,7 +21,7 @@ def login():
 
 def run(r, saved_list, some_list):
     for comment in r.subreddit(easy).comments(limit=500):
-        if "gimme class" in comment.body and comment.id not in replied_list and comment.author != r.user.me():
+        if "gimme" in comment.body and comment.id not in replied_list and comment.author != r.user.me():
             print("making sure this isn't deja vu...")
             print("giving flairs")
             r.subreddit(easy).flair.set(comment.author, some_list[random.randint(0,3)])
