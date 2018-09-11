@@ -196,7 +196,7 @@ some_list = ['Halfling', 'Dwarf', 'Elf', 'Orc']
 easy = 'kickopenthedoor'
 
 
-img_today = "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwj-qZSG97DdAhVI7qwKHW4RAhYQjRx6BAgBEAU&url=https%3A%2F%2Fsteamcommunity.com%2Fsharedfiles%2Ffiledetails%2F%3Fid%3D952828429&psig=AOvVaw0r0iDJCGUPMIG_QanKfz28&ust=1536685853042357"
+img_today = "https://i.redd.it/rgdc846otml11.jpg"
 upv1 = "70"
 upv2 = "101"
 
