@@ -102,6 +102,7 @@ def replymesg():
                     print(message.id)
                     r.redditor(message.author.name).message('Hello Halfing! You\'ll be added soon.', 'Dumb, slow mods amirite?')
                     r.redditor('VirtuousVermin').message(message.author, f'u/{message.author} is a halfling')
+                    r.redditor('blokkiesam').message(message.author, f'u/{message.author} is a halfling')
                     mesg_list.append(message.id)
                     with open ("list3.txt", "a") as f:
                         f.write(message.id + "\n")
@@ -121,6 +122,7 @@ def replymesg():
                     print(message.id)
                     r.redditor(message.author.name).message('Hello Orc! You\'ll be added soon.', 'Dumb, slow mods amirite?')
                     r.redditor('VirtuousVermin').message(message.author, f'u/{message.author} is an orc')
+                    r.redditor('blokkiesam').message(message.author, f'u/{message.author} is an orc')
                     mesg_list.append(message.id)
                     with open ("list3.txt", "a") as f:
                         f.write(message.id + "\n")
@@ -139,6 +141,7 @@ def replymesg():
                     print(message.id)
                     r.redditor(message.author.name).message('Hello Elf! You\'ll be added soon.', 'Dumb, slow mods amirite?')
                     r.redditor('VirtuousVermin').message(message.author, f'u/{message.author} is an elf')
+                    r.redditor('blokkiesam').message(message.author, f'u/{message.author} is an elf')
                     mesg_list.append(message.id)
                     with open ("list3.txt", "a") as f:
                         f.write(message.id + "\n")
@@ -157,6 +160,7 @@ def replymesg():
                     print(message.id)
                     r.redditor(message.author.name).message('Hello Dwarf! You\'ll be added soon.', 'Dumb, slow mods amirite?')
                     r.redditor('VirtuousVermin').message(message.author, f'u/{message.author} is a dwarf')
+                    r.redditor('blokkiesam').message(message.author, f'u/{message.author} is a dwarf')
                     mesg_list.append(message.id)
                     with open ("list3.txt", "a") as f:
                         f.write(message.id + "\n")
