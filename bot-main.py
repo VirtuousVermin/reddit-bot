@@ -90,7 +90,8 @@ def post_recog(easy, upv1):
                 submission.mod.remove()
 
 
-         
+def replymsg():
+    for message in r.message.inbox:
 
 
 def saved_list():
@@ -123,5 +124,6 @@ post_list = list2()
 while True:
    run(r, saved_list,  some_list)
    post_recog(easy, upv1)
+   replymsg()
 
 subreddit = r.subreddit(easy)
