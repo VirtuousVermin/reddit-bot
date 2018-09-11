@@ -82,7 +82,7 @@ def post_recog(easy, upv1):
                     f.write(submission.id + "\n")
                     print("submission filter updated")  
             else:
-                submission.mod.flair('You\'re nearly there. Keep upvoting! {submission.score}/{upv1}')
+                submission.mod.flair(f'You\'re nearly there. Keep upvoting! {submission.score}/{upv1}')
                 
                 
             if dif >= datetime.timedelta(days=1):
