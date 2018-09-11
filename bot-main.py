@@ -91,8 +91,8 @@ def post_recog(easy, upv1):
 
 
 def replymsg():
-    for message in r.message(inbox).new(limit=200):
-        if halfling in message.title and message.id not in msg_list:
+    for message in message.inbox:
+        if "halfling" in message.title and message.id:
             print(message.id)
 
 
