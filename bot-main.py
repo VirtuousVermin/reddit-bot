@@ -107,6 +107,10 @@ def replymesg():
                         print("message filter updated")  
                 else:
                     r.redditor(message.author.name).message('Liar!', 'You\'re not an Halfling!')
+                    mesg_list.append(message.id)
+                    with open ("list3.txt", "a") as f:
+                        f.write(message.id + "\n")
+                        print("message filter updated")  
 
 
         if "orc" in message.subject.lower() and message.id not in mesg_list:
@@ -122,6 +126,10 @@ def replymesg():
                         print("message filter updated")
                 else:
                     r.redditor(message.author.name).message('Liar!', 'You\'re not an Orc!')
+                    mesg_list.append(message.id)
+                    with open ("list3.txt", "a") as f:
+                        f.write(message.id + "\n")
+                        print("message filter updated")  
 
         if "elf" in message.subject.lower() and message.id not in mesg_list:
             for flair in r.subreddit(easy).flair(redditor=message.author):
@@ -136,6 +144,10 @@ def replymesg():
                         print("message filter updated")
                 else:
                     r.redditor(message.author.name).message('Liar!', 'You\'re not an Elf!')
+                    mesg_list.append(message.id)
+                    with open ("list3.txt", "a") as f:
+                        f.write(message.id + "\n")
+                        print("message filter updated")  
 
         if "dwarf" in message.subject.lower() and message.id not in mesg_list:
             for flair in r.subreddit(easy).flair(redditor=message.author):
@@ -149,7 +161,11 @@ def replymesg():
                         f.write(message.id + "\n")
                         print("message filter updated")
                 else:
-                    r.redditor(message.author.name).message('Liar!', 'You\'re not an Elf!')
+                    r.redditor(message.author.name).message('Liar!', 'You\'re not an Dwarf!')
+                    mesg_list.append(message.id)
+                    with open ("list3.txt", "a") as f:
+                        f.write(message.id + "\n")
+                        print("message filter updated")  
 
 
 def saved_list():
