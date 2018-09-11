@@ -71,7 +71,7 @@ def post_recog(easy, upv1):
 
         if upv1 in submission.title and submission.id not in post_list:
 
-            if submission.score >= 60:
+            if submission.score >= 70:
                 print("removing the post")
                 submission.mod.flair('Complete!')
                 submission.mod.remove()
@@ -82,7 +82,7 @@ def post_recog(easy, upv1):
                     f.write(submission.id + "\n")
                     print("submission filter updated")  
             else:
-                submission.mod.flair('You\'re nearly there. Keep upvoting!')
+                submission.mod.flair('You\'re nearly there. Keep upvoting! {submission.score}/{upv1}')
                 
                 
             if dif >= datetime.timedelta(days=1):
@@ -196,7 +196,7 @@ easy = 'kickopenthedoor'
 
 
 img_today = "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwj-qZSG97DdAhVI7qwKHW4RAhYQjRx6BAgBEAU&url=https%3A%2F%2Fsteamcommunity.com%2Fsharedfiles%2Ffiledetails%2F%3Fid%3D952828429&psig=AOvVaw0r0iDJCGUPMIG_QanKfz28&ust=1536685853042357"
-upv1 = "60"
+upv1 = "70"
 upv2 = "101"
 
 r = login()
