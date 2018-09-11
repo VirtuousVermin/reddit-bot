@@ -101,7 +101,7 @@ def replymesg():
                 if 'Halfling' in str(flair):
                     print(message.id)
                     r.redditor(message.author.name).message('Hello Halfing! You\'ll be added soon.', 'Dumb, slow mods amirite?')
-                    r.redditor('VirtuousVermin').message(message.author, 'u/{message.author} is a halfling')
+                    r.redditor('VirtuousVermin').message(message.author, f'u/{message.author} is a halfling')
                     mesg_list.append(message.id)
                     with open ("list3.txt", "a") as f:
                         f.write(message.id + "\n")
@@ -120,7 +120,7 @@ def replymesg():
                 if 'Orc' in str(flair):
                     print(message.id)
                     r.redditor(message.author.name).message('Hello Orc! You\'ll be added soon.', 'Dumb, slow mods amirite?')
-                    r.redditor('VirtuousVermin').message(message.author, 'u/{message.author} is an orc')
+                    r.redditor('VirtuousVermin').message(message.author, f'u/{message.author} is an orc')
                     mesg_list.append(message.id)
                     with open ("list3.txt", "a") as f:
                         f.write(message.id + "\n")
@@ -138,7 +138,7 @@ def replymesg():
                 if 'Elf' in str(flair):
                     print(message.id)
                     r.redditor(message.author.name).message('Hello Elf! You\'ll be added soon.', 'Dumb, slow mods amirite?')
-                    r.redditor('VirtuousVermin').message(message.author, 'u/{message.author} is an elf')
+                    r.redditor('VirtuousVermin').message(message.author, f'u/{message.author} is an elf')
                     mesg_list.append(message.id)
                     with open ("list3.txt", "a") as f:
                         f.write(message.id + "\n")
@@ -156,13 +156,13 @@ def replymesg():
                 if 'Dwarf' in str(flair):
                     print(message.id)
                     r.redditor(message.author.name).message('Hello Dwarf! You\'ll be added soon.', 'Dumb, slow mods amirite?')
-                    r.redditor('VirtuousVermin').message(message.author, 'u/{message.author} is a dwarf')
+                    r.redditor('VirtuousVermin').message(message.author, f'u/{message.author} is a dwarf')
                     mesg_list.append(message.id)
                     with open ("list3.txt", "a") as f:
                         f.write(message.id + "\n")
                         print("message filter updated")
                 else:
-                    r.redditor(message.author.name).message('Liar!', 'You\'re not an Dwarf!')
+                    r.redditor(message.author.name).message('Liar!', f'You\'re not an Dwarf!')
                     mesg_list.append(message.id)
                     with open ("list3.txt", "a") as f:
                         f.write(message.id + "\n")
