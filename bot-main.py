@@ -72,7 +72,7 @@ def post_recog(easy, upv1):
 
         if upv1 in submission.title and submission.id not in post_list:
 
-            if submission.score >= 70:
+            if submission.score >= int(upv1):
                 print("removing the post")
                 submission.mod.flair('Complete!')
                 submission.mod.remove()
@@ -203,7 +203,7 @@ easy = 'kickopenthedoor'
 
 
 img_today = "https://i.redd.it/rgdc846otml11.jpg"
-upv1 = "70"
+upv1 = "50"
 upv2 = "101"
 
 r = login()
