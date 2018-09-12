@@ -62,10 +62,11 @@ def post_recog(easy, upv1):
                 
             date = datetime.datetime.fromtimestamp(submission.created_utc)
             dif = datetime.datetime.utcnow() - date
-            if dif >= datetime.timedelta(days=1):
+            if date >= datetime.timedelta(days=1):
                 print('ran out of time')
                 submission.mod.flair('C\'mon guys! We failed!')
                 submission.mod.remove()
+                r.subreddit(easy).submit('Our world is in ruin! We have failed.', url = img_today)
                
  # divider
 
@@ -86,10 +87,11 @@ def post_recog(easy, upv1):
                 
             date = datetime.datetime.fromtimestamp(submission.created_utc)
             dif = datetime.datetime.utcnow() - date
-            if dif >= datetime.timedelta(days=1):
+            if date >= datetime.timedelta(days=1):
                 print('ran out of time')
                 submission.mod.flair('C\'mon guys! We failed!')
                 submission.mod.remove()
+                r.subreddit(easy).submit('Our world is in ruin! We have failed.', url = img_today)
 
 # divider
 
