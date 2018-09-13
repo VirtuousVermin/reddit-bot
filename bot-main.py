@@ -96,7 +96,8 @@ def replymesg():
                     with open ("list3.txt", "a") as f:
                         f.write(message.id + "\n")
                         print("message filter updated")  
-                else:
+                
+                if 'Halfling' not in str(flair):
                     r.redditor(message.author.name).message('Liar!', 'You\'re not an Halfling!')
                     mesg_list.append(message.id)
                     with open ("list3.txt", "a") as f:
@@ -116,7 +117,8 @@ def replymesg():
                     with open ("list3.txt", "a") as f:
                         f.write(message.id + "\n")
                         print("message filter updated")
-                else:
+                
+                if 'Orc' not in str(flair):
                     r.redditor(message.author.name).message('Liar!', 'You\'re not an Orc!')
                     mesg_list.append(message.id)
                     with open ("list3.txt", "a") as f:
@@ -135,7 +137,8 @@ def replymesg():
                     with open ("list3.txt", "a") as f:
                         f.write(message.id + "\n")
                         print("message filter updated")
-                else:
+                
+                if 'Elf' not in str(flair):
                     r.redditor(message.author.name).message('Liar!', 'You\'re not an Elf!')
                     mesg_list.append(message.id)
                     with open ("list3.txt", "a") as f:
@@ -154,7 +157,8 @@ def replymesg():
                     with open ("list3.txt", "a") as f:
                         f.write(message.id + "\n")
                         print("message filter updated")
-                else:
+                
+                if 'Dwarf' not in str(flair):
                     r.redditor(message.author.name).message('Liar!', f'You\'re not an Dwarf!')
                     mesg_list.append(message.id)
                     with open ("list3.txt", "a") as f:
