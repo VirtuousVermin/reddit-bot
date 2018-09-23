@@ -46,7 +46,7 @@ def post_recog(easy, upv1):
     for submission in r.subreddit(easy).new(limit=20):
         if upv2 in submission.title and submission.id not in post_list:
 
-            if submission.score >= 100:
+            if submission.score >= 60:
                 print("removing the post")
                 submission.mod.flair('Complete!')
                 submission.mod.remove()
@@ -193,9 +193,9 @@ some_list = ['Halfling', 'Dwarf', 'Elf', 'Orc']
 easy = 'kickopenthedoor'
 
 
-img_today = "https://i.redd.it/rgdc846otml11.jpg"
+img_today = "http://houseofthedead.wikia.com/wiki/Judgment?file=Judgement.jpg"
 upv1 = "50"
-upv2 = "101"
+upv2 = "60"
 
 r = login()
 replied_list = saved_list()
