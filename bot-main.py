@@ -23,7 +23,6 @@ def login():
 def run(r, saved_list, some_list):
     for comment in r.subreddit(easy).comments(limit=500):
         if "gimme" in comment.body and comment.id not in replied_list and comment.author != r.user.me():
-            print("making sure this isn't deja vu...")
             print("giving flairs")
             r.subreddit(easy).flair.set(comment.author, some_list[random.randint(0,3)])
             print("flairs gimmied")
@@ -46,18 +45,18 @@ def post_recog(easy, upv1):
     for submission in r.subreddit(easy).new(limit=20):
         if upv2 in submission.title and submission.id not in post_list:
 
-            if submission.score >= 60:
+            if submission.score >= int(upv2):
                 print("removing the post")
                 submission.mod.flair('Complete!')
                 submission.mod.remove()
 
-                r.subreddit(easy).submit('We have been saved by your upvotes once again!', url = img_today)
+                r.subreddit(easy).submit(ahhnames[random.randint(0,9)], url = img_today)
                 post_list.append(submission.id)
                 with open ("list2.txt", "a") as f:
                     f.write(submission.id + "\n")
                     print("submission filter updated")
             else:
-                submission.mod.flair('You\'re nearly there. Keep upvoting!')
+                submission.mod.flair(f'{submission.score}/{upv2} You\'re nearly there. Keep upvoting!')
 
                 
          
@@ -77,8 +76,10 @@ def post_recog(easy, upv1):
                     f.write(submission.id + "\n")
                     print("submission filter updated")  
             else:
-                submission.mod.flair(f'You\'re nearly there. Keep upvoting! {submission.score}/{upv1}')
+                submission.mod.flair(f'{submission.score}/{upv1} You\'re nearly there. Keep upvoting!')
                 
+# timer
+
             
 # divider
 
@@ -186,14 +187,13 @@ def list3():
         mesg_list = mesg_list.split()
     return mesg_list
 
-
-
 some_list = ['Halfling', 'Dwarf', 'Elf', 'Orc']
+ahhnames = ['We have been saved by your upvotes once again!', 'Never fear, the valiant warriors of r/kickopenthedoor have saved us!', 'Congratulations. Take a vacation, you deserve it', 'Sponsored by Audible', 'Begone, thot!', 'You can never break us!', 'yeet you did it', 'who the hell downvoted it', 'these look like genuine posts but its all the government', 'good']
 
 easy = 'kickopenthedoor'
 
 
-img_today = "http://houseofthedead.wikia.com/wiki/Judgment?file=Judgement.jpg"
+img_today = ""
 upv1 = "50"
 upv2 = "60"
 
