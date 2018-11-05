@@ -194,7 +194,7 @@ easy = 'kickopenthedoor'
 
 
 img_today = ""
-upv1 = "50"
+upv1 = "40"
 upv2 = "60"
 
 r = login()
