@@ -53,7 +53,7 @@ def post_recog(easy, upv1, n, switch):
                 overcomplicated = ''.join(str(e) for e in another[:n])
 
                 if overcomplicated != '':
-                    if switch = 1:
+                    if switch == 1:
                         switch = 0
                         break
                     ints = int(overcomplicated)
