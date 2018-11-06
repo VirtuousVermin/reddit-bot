@@ -6,6 +6,7 @@ import requests
 import random
 import datetime
 import json
+import re
 print("not deporting the flares")
 
 
@@ -18,6 +19,7 @@ def login():
                 user_agent = 'Upvote and fighter bot for r/kickdownthedoor.',
                 )
     print("logged on")
+    time.sleep(2)
     return r
 
 def run(r, saved_list, some_list):
@@ -42,41 +44,31 @@ def run(r, saved_list, some_list):
 
 
 def post_recog(easy, upv1):
-    for submission in r.subreddit(easy).new(limit=20):
-        if upv2 in submission.title and submission.id not in post_list:
+    for submission in r.subreddit(easy).hot(limit=10):
+        print(submission.title)
+        while True:
+            fiall = re.findall('\\d+', submission.title)
+            another.extend(fiall)
 
-            if submission.score >= int(upv2):
-                print("removing the post")
-                submission.mod.flair('Complete!')
-                submission.mod.remove()
+            overcomplicated = ''.join(str(e) for e in another[:1])
 
-                r.subreddit(easy).submit(ahhnames[random.randint(0,9)], url = img_today)
-                post_list.append(submission.id)
-                with open ("list2.txt", "a") as f:
+            ints = int(overcomplicated)
+            time.sleep(20)
+            break
+
+        if submission.score >= ints:
+            print("removing the post")
+            submission.mod.flair('Complete!')
+
+            r.subreddit(easy).submit(ahhnames[random.randint(0,9)], url = img_today)
+            post_list.append(submission.id)
+            with open ("list2.txt", "a") as f:
                     f.write(submission.id + "\n")
                     print("submission filter updated")
-            else:
-                submission.mod.flair(f'{submission.score}/{upv2} You\'re nearly there. Keep upvoting!')
+        else:
+            submission.mod.flair(f'{submission.score}/{ints} You\'re nearly there. Keep upvoting!')
 
-                
-         
-               
- # divider
-
-        if upv1 in submission.title and submission.id not in post_list:
-
-            if submission.score >= int(upv1):
-                print("removing the post")
-                submission.mod.flair('Complete!')
-                submission.mod.remove()
-                print('posting...')
-                r.subreddit(easy).submit('We have been saved by your upvotes once again!', url = img_today)
-                post_list.append(submission.id)
-                with open ("list2.txt", "a") as f:
-                    f.write(submission.id + "\n")
-                    print("submission filter updated")  
-            else:
-                submission.mod.flair(f'{submission.score}/{upv1} You\'re nearly there. Keep upvoting!')
+        time.sleep(25)
                 
 # timer
 
@@ -193,9 +185,11 @@ ahhnames = ['We have been saved by your upvotes once again!', 'Never fear, the v
 easy = 'kickopenthedoor'
 
 
-img_today = ""
+img_today = "https://i.redd.it/wr880nydoiw11.jpg"
 upv1 = "40"
 upv2 = "60"
+another = []
+
 
 r = login()
 replied_list = saved_list()
