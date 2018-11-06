@@ -43,7 +43,7 @@ def run(r, saved_list, some_list):
             time.sleep(3)
 
 
-def post_recog(easy, upv1, n):
+def post_recog(easy, upv1, n, switch):
     for submission in r.subreddit(easy).hot(limit=10):
         if submission.id not in post_list:
             while True:
@@ -53,8 +53,12 @@ def post_recog(easy, upv1, n):
                 overcomplicated = ''.join(str(e) for e in another[:n])
 
                 if overcomplicated != '':
+                    if switch = 1:
+                        switch = 0
+                        break
                     ints = int(overcomplicated)
                 else:
+                    switch = 1
                     continue
                 time.sleep(20)
                 
@@ -197,6 +201,7 @@ upv1 = "40"
 upv2 = "60"
 another = []
 n = 1
+switch = 0
 
 r = login()
 replied_list = saved_list()
@@ -204,7 +209,7 @@ post_list = list2()
 mesg_list = list3()
 while True:
    run(r, saved_list,  some_list)
-   post_recog(easy, upv1, n)
+   post_recog(easy, upv1, n, switch)
    replymesg()
    time.sleep(7)
 
