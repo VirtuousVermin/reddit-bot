@@ -45,7 +45,6 @@ def run(r, saved_list, some_list):
 
 def post_recog(easy, upv1):
     for submission in r.subreddit(easy).hot(limit=10):
-        print(submission.title)
         while True:
             fiall = re.findall('\\d+', submission.title)
             another.extend(fiall)
@@ -56,19 +55,21 @@ def post_recog(easy, upv1):
             time.sleep(20)
             break
 
-        if submission.score >= ints:
-            print("removing the post")
-            submission.mod.flair('Complete!')
+        if bool(re.search('\\d+', submission.title)) is True:
+            if submission.score >= ints:
+                print("removing the post")
+                submission.mod.flair('Complete!')
 
-            r.subreddit(easy).submit(ahhnames[random.randint(0,9)], url = img_today)
-            post_list.append(submission.id)
-            with open ("list2.txt", "a") as f:
+                r.subreddit(easy).submit(ahhnames[random.randint(0,9)], url = img_today)
+                post_list.append(submission.id)
+                with open ("list2.txt", "a") as f:
                     f.write(submission.id + "\n")
                     print("submission filter updated")
-        else:
-            submission.mod.flair(f'{submission.score}/{ints} You\'re nearly there. Keep upvoting!')
+            else:
+                submission.mod.flair(f'{submission.score}/{ints} You\'re nearly there. Keep upvoting!')
+                print('challenge flair assigned')
 
-        time.sleep(25)
+            time.sleep(25)
                 
 # timer
 
