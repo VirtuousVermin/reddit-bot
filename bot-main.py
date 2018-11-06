@@ -43,33 +43,39 @@ def run(r, saved_list, some_list):
             time.sleep(3)
 
 
-def post_recog(easy, upv1):
+def post_recog(easy, upv1, n):
     for submission in r.subreddit(easy).hot(limit=10):
-        while True:
-            fiall = re.findall('\\d+', submission.title)
-            another.extend(fiall)
+        if submission.id not in post_list:
+            while True:
+                fiall = re.findall('\\d+', submission.title)
+                another.extend(fiall)
 
-            overcomplicated = ''.join(str(e) for e in another[:1])
+                overcomplicated = ''.join(str(e) for e in another[:n])
 
-            ints = int(overcomplicated)
-            time.sleep(20)
-            break
+                if overcomplicated != '':
+                    ints = int(overcomplicated)
+                else:
+                    continue
+                time.sleep(20)
+                
+                break
 
-        if bool(re.search('\\d+', submission.title)) is True:
-            if submission.score >= ints:
-                print("removing the post")
-                submission.mod.flair('Complete!')
+            if bool(re.search('\\d+', submission.title)) is True:
+                if submission.score >= ints:
+                    print("removing the post")
+                    submission.mod.flair('Complete!')
 
-                r.subreddit(easy).submit(ahhnames[random.randint(0,9)], url = img_today)
-                post_list.append(submission.id)
-                with open ("list2.txt", "a") as f:
-                    f.write(submission.id + "\n")
-                    print("submission filter updated")
-            else:
-                submission.mod.flair(f'{submission.score}/{ints} You\'re nearly there. Keep upvoting!')
-                print('challenge flair assigned')
+                    r.subreddit(easy).submit(ahhnames[random.randint(0,9)], url = img_today)
+                    post_list.append(submission.id)
+                    n = n + 1
+                    with open ("list2.txt", "a") as f:
+                        f.write(submission.id + "\n")
+                        print("submission filter updated")
+                else:
+                    submission.mod.flair(f'{submission.score}/{ints} You\'re nearly there. Keep upvoting!')
+                    print('challenge flair assigned')
 
-            time.sleep(25)
+                time.sleep(25)
                 
 # timer
 
@@ -190,7 +196,7 @@ img_today = "https://i.redd.it/wr880nydoiw11.jpg"
 upv1 = "40"
 upv2 = "60"
 another = []
-
+n = 1
 
 r = login()
 replied_list = saved_list()
@@ -198,7 +204,7 @@ post_list = list2()
 mesg_list = list3()
 while True:
    run(r, saved_list,  some_list)
-   post_recog(easy, upv1)
+   post_recog(easy, upv1, n)
    replymesg()
    time.sleep(7)
 
