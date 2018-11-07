@@ -45,41 +45,41 @@ def run(r, saved_list, some_list):
 
 def post_recog(easy, upv1, n, switch):
     for submission in r.subreddit(easy).hot(limit=10):
-        if submission.id not in post_list:
-            while True:
-                fiall = re.findall('\\d+', submission.title)
-                another.extend(fiall)
+        if submission.id in post_list:
+            continue
+        while True:
+            title_digits = re.findall('\\d+', submission.title)
+            all_title_digits.extend(title_digits)
 
-                overcomplicated = ''.join(str(e) for e in another[:n])
+            combined_digits = ''.join(str(e) for e in all_title_digits[:n])
 
-                if overcomplicated != '':
-                    if switch == 1:
-                        switch = 0
-                        break
-                    ints = int(overcomplicated)
-                else:
-                    switch = 1
-                    continue
+            if not combined_digits:
+                switch = 1
+                continue
+            if switch == 1:
+                switch = 0
+                break
+            else:
+                ints = int(combined_digits)
                 time.sleep(20)
-                
                 break
 
-            if bool(re.search('\\d+', submission.title)) is True:
-                if submission.score >= ints:
-                    print("removing the post")
-                    submission.mod.flair('Complete!')
+        if bool(re.search('\\d+', submission.title)):
+            if submission.score >= ints:
+                print("removing the post")
+                submission.mod.flair('Complete!')
 
-                    r.subreddit(easy).submit(ahhnames[random.randint(0,9)], url = img_today)
-                    post_list.append(submission.id)
-                    n = n + 1
-                    with open ("list2.txt", "a") as f:
-                        f.write(submission.id + "\n")
-                        print("submission filter updated")
-                else:
-                    submission.mod.flair(f'{submission.score}/{ints} You\'re nearly there. Keep upvoting!')
-                    print('challenge flair assigned')
+                r.subreddit(easy).submit(title_names[random.randint(0,9)], url = img_today)
+                post_list.append(submission.id)
+                n = n + 1
+                with open ("list2.txt", "a") as f:
+                    f.write(submission.id + "\n")
+                    print("submission filter updated")
+            else:
+                submission.mod.flair(f'{submission.score}/{ints} You\'re nearly there. Keep upvoting!')
+                print('challenge flair assigned')
 
-                time.sleep(25)
+            time.sleep(25)
                 
 # timer
 
@@ -191,7 +191,7 @@ def list3():
     return mesg_list
 
 some_list = ['Halfling', 'Dwarf', 'Elf', 'Orc']
-ahhnames = ['We have been saved by your upvotes once again!', 'Never fear, the valiant warriors of r/kickopenthedoor have saved us!', 'Congratulations. Take a vacation, you deserve it', 'Sponsored by Audible', 'Begone, thot!', 'You can never break us!', 'yeet you did it', 'who the hell downvoted it', 'these look like genuine posts but its all the government', 'good']
+title_names = ['We have been saved by your upvotes once again!', 'Never fear, the valiant warriors of r/kickopenthedoor have saved us!', 'Congratulations. Take a vacation, you deserve it', 'Sponsored by Audible', 'Begone, thot!', 'You can never break us!', 'yeet you did it', 'who the hell downvoted it', 'these look like genuine posts but its all the government', 'good']
 
 easy = 'kickopenthedoor'
 
@@ -199,7 +199,7 @@ easy = 'kickopenthedoor'
 img_today = "https://i.redd.it/wr880nydoiw11.jpg"
 upv1 = "40"
 upv2 = "60"
-another = []
+all_title_digits = []
 n = 1
 switch = 0
 
