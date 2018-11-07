@@ -66,6 +66,7 @@ def post_recog(easy, upv1, n, switch):
 
         if bool(re.search('\\d+', submission.title)):
             if submission.score >= ints:
+                img_today = submission.url
                 print("removing the post")
                 submission.mod.flair('Complete!')
 
@@ -189,6 +190,7 @@ def list3():
         mesg_list = f.read()
         mesg_list = mesg_list.split()
     return mesg_list
+
 
 some_list = ['Halfling', 'Dwarf', 'Elf', 'Orc']
 title_names = ['We have been saved by your upvotes once again!', 'Never fear, the valiant warriors of r/kickopenthedoor have saved us!', 'Congratulations. Take a vacation, you deserve it', 'Sponsored by Audible', 'Begone, thot!', 'You can never break us!', 'yeet you did it', 'who the hell downvoted it', 'these look like genuine posts but its all the government', 'good']
