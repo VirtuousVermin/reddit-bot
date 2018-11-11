@@ -53,15 +53,15 @@ def post_recog(easy, upv1, n, switch):
         while True:
             title_digits = re.findall('\\d+', submission.title)
             all_title_digits.extend(title_digits)
-            combined_digits = ''.join(str(e) for e in all_title_digits[-1])
 
-            if not combined_digits:
+            if all_title_digits == '':
                 switch = 1
                 continue
             if switch == 1:
                 switch = 0
                 break
             else:
+                combined_digits = ''.join(str(e) for e in all_title_digits[-1])
                 ints = int(combined_digits)
                 time.sleep(20)
                 break
