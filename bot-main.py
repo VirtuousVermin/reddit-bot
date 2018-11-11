@@ -52,7 +52,7 @@ def post_recog(easy, upv1, n, switch):
             continue
         while True:
             title_digits = re.findall('\\d+', submission.title)
-            all_title_digits.extend(title_digits[:n])
+            all_title_digits.extend(title_digits[:2])
 
             combined_digits = ''.join(str(e) for e in all_title_digits[:n])
 
