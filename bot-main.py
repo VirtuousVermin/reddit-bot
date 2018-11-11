@@ -68,7 +68,7 @@ def post_recog(easy, upv1, n, switch):
             if submission.score >= ints:
                 img_today = submission.url
                 print("removing the post")
-                submission.mod.flair('Complete!')
+                submission.mod.flair('Slain!')
 
                 r.subreddit(easy).submit(title_names[random.randint(0,9)], url = img_today)
                 post_list.append(submission.id)
