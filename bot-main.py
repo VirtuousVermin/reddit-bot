@@ -47,14 +47,14 @@ def run(r, saved_list, some_list):
 
 
 def post_recog(easy, upv1, n, switch):
-    for submission in r.subreddit(easy).new(limit=10):
+    for submission in r.subreddit(easy).top(limit=10):
         if submission.id in post_list:
             continue
         while True:
             title_digits = re.findall('\\d+', submission.title)
-            all_title_digits.extend(title_digits[:2])
-
-            combined_digits = ''.join(str(e) for e in all_title_digits[:n])
+            all_title_digits.extend(title_digits)
+            print(all_title_digits)
+            combined_digits = ''.join(str(e) for e in all_title_digits[-1])
 
             if not combined_digits:
                 switch = 1
@@ -64,6 +64,7 @@ def post_recog(easy, upv1, n, switch):
                 break
             else:
                 ints = int(combined_digits)
+                print(ints)
                 time.sleep(20)
                 break
 
@@ -74,12 +75,12 @@ def post_recog(easy, upv1, n, switch):
                 submission.mod.flair('Slain!')
 
                 # r.subreddit(easy).submit(title_names[random.randint(0,9)], url = img_today)
-                # post_list.append(submission.id)
+                post_list.append(submission.id)
                 # n = n + 1
-                # with open ("list2.txt", "a") as f:
-                    # f.write(submission.id + "\n")
-                    # print("submission filter updated")
-            else:
+                with open ("list2.txt", "a") as f:
+                    f.write(submission.id + "\n")
+                    print("submission filter updated")
+            if submission.score != ints and submission.id not in post_list:
                 submission.mod.flair(f'{submission.score}/{ints} You\'re nearly there. Keep upvoting!')
                 print('challenge flair assigned')
 
