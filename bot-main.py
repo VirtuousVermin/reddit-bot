@@ -44,7 +44,7 @@ def run(r, saved_list, some_list):
 
 
 def post_recog(easy, upv1, n, switch):
-    for submission in r.subreddit(easy).hot(limit=10):
+    for submission in r.subreddit(easy).new(limit=10):
         if submission.id in post_list:
             continue
         while True:
