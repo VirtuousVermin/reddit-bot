@@ -53,7 +53,6 @@ def post_recog(easy, upv1, n, switch):
         while True:
             title_digits = re.findall('\\d+', submission.title)
             all_title_digits.extend(title_digits)
-            print(all_title_digits)
             combined_digits = ''.join(str(e) for e in all_title_digits[-1])
 
             if not combined_digits:
@@ -64,14 +63,12 @@ def post_recog(easy, upv1, n, switch):
                 break
             else:
                 ints = int(combined_digits)
-                print(ints)
                 time.sleep(20)
                 break
 
         if bool(re.search('\\d+', submission.title)):
             if submission.score >= ints:
                 img_today = submission.url
-                print(ints)
                 submission.mod.flair('Slain!')
 
                 # r.subreddit(easy).submit(title_names[random.randint(0,9)], url = img_today)
