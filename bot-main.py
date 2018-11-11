@@ -43,13 +43,16 @@ def run(r, saved_list, some_list):
             time.sleep(3)
 
 
+# main body
+
+
 def post_recog(easy, upv1, n, switch):
     for submission in r.subreddit(easy).new(limit=10):
         if submission.id in post_list:
             continue
         while True:
             title_digits = re.findall('\\d+', submission.title)
-            all_title_digits.extend(title_digits)
+            all_title_digits.extend(title_digits[:n])
 
             combined_digits = ''.join(str(e) for e in all_title_digits[:n])
 
@@ -67,15 +70,15 @@ def post_recog(easy, upv1, n, switch):
         if bool(re.search('\\d+', submission.title)):
             if submission.score >= ints:
                 img_today = submission.url
-                print("removing the post")
+                print(ints)
                 submission.mod.flair('Slain!')
 
-                r.subreddit(easy).submit(title_names[random.randint(0,9)], url = img_today)
-                post_list.append(submission.id)
-                n = n + 1
-                with open ("list2.txt", "a") as f:
-                    f.write(submission.id + "\n")
-                    print("submission filter updated")
+                # r.subreddit(easy).submit(title_names[random.randint(0,9)], url = img_today)
+                # post_list.append(submission.id)
+                # n = n + 1
+                # with open ("list2.txt", "a") as f:
+                    # f.write(submission.id + "\n")
+                    # print("submission filter updated")
             else:
                 submission.mod.flair(f'{submission.score}/{ints} You\'re nearly there. Keep upvoting!')
                 print('challenge flair assigned')
